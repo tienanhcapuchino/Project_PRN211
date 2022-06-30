@@ -64,7 +64,6 @@ D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN
 D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Project_PRN211.pdb
 D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Project_PRN211.genruntimeconfig.cache
 D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\ref\Project_PRN211.dll
-D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\bin\Debug\net5.0\fonts\icomoon\selection.json
 D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\bin\Debug\net5.0\Project_PRN211.Views.dll
 D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\bin\Debug\net5.0\Project_PRN211.Views.pdb
 D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Project_PRN211.RazorAssemblyInfo.cache
@@ -72,7 +71,7 @@ D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN
 D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Project_PRN211.TagHelpers.input.cache
 D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Project_PRN211.TagHelpers.output.cache
 D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Project_PRN211.RazorCoreGenerate.cache
-D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Razor\Views\Index.cshtml.g.cs
-D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Razor\Views\Login.cshtml.g.cs
 D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Project_PRN211.RazorTargetAssemblyInfo.cs
 D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Project_PRN211.Views.pdb
+D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
+D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Razor\Views\Home\Login.cshtml.g.cs

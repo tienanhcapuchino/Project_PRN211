@@ -6,7 +6,11 @@ namespace Project_PRN211.Controllers
     {
         public IActionResult Index()
         {
-            return View("/Views/Index.cshtml");
+            return View();
+        }
+        public IActionResult Login()
+        {
+            return View();
         }
     }
 }
