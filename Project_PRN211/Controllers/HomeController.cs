@@ -74,7 +74,7 @@ namespace Project_PRN211.Controllers
             else
             {
                 ViewBag.Error = "Login Failed! Please check your username and password!";
-                return RedirectToAction("Login");
+                return View("/Views/Home/Login.cshtml");
             }
         }
         public IActionResult Admin()
@@ -84,7 +84,7 @@ namespace Project_PRN211.Controllers
             if (jsonStr is null)
             {
                 ViewBag.Error = "Login Failed! Please check your username and password!";
-                return RedirectToAction("Login");
+                return View("/Views/Home/Login.cshtml");
             }
             else
             {
