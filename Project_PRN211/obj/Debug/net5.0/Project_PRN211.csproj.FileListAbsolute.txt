@@ -75,3 +75,6 @@ D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN
 D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Project_PRN211.Views.pdb
 D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Razor\Views\Home\Login.cshtml.g.cs
+D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Razor\Views\Home\Admin.cshtml.g.cs
+D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Razor\Views\Shared\Header.cshtml.g.cs
+D:\FPT University\SUMMER 2022\PRN211\Project\Project_PRN211-Solution\Project_PRN211\obj\Debug\net5.0\Razor\Views\Shared\Footer.cshtml.g.cs

@@ -9,8 +9,7 @@ namespace Project_PRN211.Models
     {
         public Room()
         {
-            Bookings = new HashSet<Booking>();
-            Employees = new HashSet<Employee>();
+            Guests = new HashSet<Guest>();
         }
 
         public short RoomNo { get; set; }
@@ -19,7 +18,6 @@ namespace Project_PRN211.Models
         public int? Status { get; set; }
 
         public virtual RoomType RoomTypeNavigation { get; set; }
-        public virtual ICollection<Booking> Bookings { get; set; }
-        public virtual ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<Guest> Guests { get; set; }
     }
 }

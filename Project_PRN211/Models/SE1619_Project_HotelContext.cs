@@ -19,10 +19,8 @@ namespace Project_PRN211.Models
         }
 
         public virtual DbSet<Bill> Bills { get; set; }
-        public virtual DbSet<Booking> Bookings { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Guest> Guests { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<RoomType> RoomTypes { get; set; }
 
@@ -45,8 +43,6 @@ namespace Project_PRN211.Models
 
                 entity.ToTable("Bill");
 
-                entity.Property(e => e.BookingId).HasColumnName("BookingID");
-
                 entity.Property(e => e.ExpiredDate).HasColumnType("date");
 
                 entity.Property(e => e.GuestId).HasColumnName("GuestID");
@@ -55,42 +51,11 @@ namespace Project_PRN211.Models
 
                 entity.Property(e => e.PaymentMode).HasMaxLength(50);
 
-                entity.HasOne(d => d.Booking)
-                    .WithMany(p => p.Bills)
-                    .HasForeignKey(d => d.BookingId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Bill_Booking");
-
                 entity.HasOne(d => d.Guest)
                     .WithMany(p => p.Bills)
                     .HasForeignKey(d => d.GuestId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Bill_Guest");
-            });
-
-            modelBuilder.Entity<Booking>(entity =>
-            {
-                entity.ToTable("Booking");
-
-                entity.Property(e => e.BookingId).HasColumnName("BookingID");
-
-                entity.Property(e => e.BookingDate).HasColumnType("date");
-
-                entity.Property(e => e.Checkout).HasColumnType("date");
-
-                entity.Property(e => e.GuestId).HasColumnName("GuestID");
-
-                entity.HasOne(d => d.Guest)
-                    .WithMany(p => p.Bookings)
-                    .HasForeignKey(d => d.GuestId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Booking_Guest");
-
-                entity.HasOne(d => d.RoomNoNavigation)
-                    .WithMany(p => p.Bookings)
-                    .HasForeignKey(d => d.RoomNo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Booking_Room");
             });
 
             modelBuilder.Entity<Employee>(entity =>
@@ -111,25 +76,11 @@ namespace Project_PRN211.Models
 
                 entity.Property(e => e.PhoneNumber).HasMaxLength(50);
 
-                entity.Property(e => e.RoleId).HasColumnName("RoleID");
-
                 entity.Property(e => e.Salary).HasColumnType("money");
 
                 entity.Property(e => e.Username)
                     .HasMaxLength(50)
                     .HasColumnName("username");
-
-                entity.HasOne(d => d.Role)
-                    .WithMany(p => p.Employees)
-                    .HasForeignKey(d => d.RoleId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Employee_Role");
-
-                entity.HasOne(d => d.RoomNoNavigation)
-                    .WithMany(p => p.Employees)
-                    .HasForeignKey(d => d.RoomNo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Employee_Room");
             });
 
             modelBuilder.Entity<Guest>(entity =>
@@ -140,7 +91,9 @@ namespace Project_PRN211.Models
 
                 entity.Property(e => e.Address).HasMaxLength(50);
 
-                entity.Property(e => e.BookingId).HasColumnName("BookingID");
+                entity.Property(e => e.ArrivalDate).HasColumnType("date");
+
+                entity.Property(e => e.DepartureDate).HasColumnType("date");
 
                 entity.Property(e => e.Dob)
                     .HasColumnType("date")
@@ -150,32 +103,12 @@ namespace Project_PRN211.Models
 
                 entity.Property(e => e.FullName).HasMaxLength(50);
 
-                entity.Property(e => e.Password)
-                    .HasMaxLength(50)
-                    .HasColumnName("password");
-
                 entity.Property(e => e.PhoneNo).HasMaxLength(50);
 
-                entity.Property(e => e.RoleId).HasColumnName("RoleID");
-
-                entity.Property(e => e.Username)
-                    .HasMaxLength(50)
-                    .HasColumnName("username");
-
-                entity.HasOne(d => d.Role)
+                entity.HasOne(d => d.RoomNoNavigation)
                     .WithMany(p => p.Guests)
-                    .HasForeignKey(d => d.RoleId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Guest_Role");
-            });
-
-            modelBuilder.Entity<Role>(entity =>
-            {
-                entity.ToTable("Role");
-
-                entity.Property(e => e.RoleId).HasColumnName("roleID");
-
-                entity.Property(e => e.RoleTitle).HasMaxLength(50);
+                    .HasForeignKey(d => d.RoomNo)
+                    .HasConstraintName("FK_Guest_Room");
             });
 
             modelBuilder.Entity<Room>(entity =>

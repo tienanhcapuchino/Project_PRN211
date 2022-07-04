@@ -8,7 +8,7 @@
 
 /*--------------------------------------------------------------------- import Fonts ---------------------------------------------------------------------*/
 
-@import url('https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700');
+@import url('https://fonts.googleapis.pm/css?family=Rajdhani:300,400,500,600,700');
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,400,600,700,900&display=swap');
 
@@ -794,9 +794,12 @@ button {
      font-weight: bold;
      font-size: 40px;
 }
+#generalContent{
+    margin-top: 40px;
+}
 
 .color_chang {
-     color: #0c0c0e;
+    color: #0c0c0e;
 }
 
 .footer {
@@ -835,9 +838,9 @@ button {
 }
 
 .copyright {
-     margin-top: 90px;
+     margin-top: 40px;
      padding: 20px 0px;
-     background-color: #fff;
+     background-color: aquamarine;
 }
 
 .copyright p {
