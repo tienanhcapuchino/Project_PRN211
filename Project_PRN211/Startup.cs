@@ -21,6 +21,7 @@ namespace Project_PRN211
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(60);
             });
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +48,13 @@ namespace Project_PRN211
                 endpoints.MapControllerRoute(
                     name: "login",
                     pattern: "{controller}/{action}/{para1}/{para2}"
+                    );
+            });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "add",
+                    pattern: "{controller}/{action}/{para1}/{para2}/{para3}/{para4}/{para5}"
                     );
             });
             app.UseEndpoints(endpoints =>

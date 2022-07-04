@@ -32,14 +32,24 @@
                                     <li class="nav-item" style="color: aliceblue;">
                                         Hello: @(ViewBag.Users)
                                     </li>
-                                } 
+                                }
                             </ul>
                             @if (@ViewBag.Users is null)
                             {
                                 <div class="sign_btn"><a href="/Home/Login">Login</a></div>
-                            }else
+                            }
+                            else
                             {
                                 <div class="sign_btn"><a href="/Home/logOut">Log out</a></div>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Menu
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="/Employee/UpdateProfile">Profile</a>
+                                        <a class="dropdown-item" href="/Employee/ChangePass">Change password</a>
+                                    </div>
+                                </div>
                             }
                         </div>
                     </nav>

@@ -1,8 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
 <!doctype html>
 <html lang="en">
 
@@ -49,18 +45,11 @@
                                     <input type="password" name="para2" class="form-control" id="password" required>
 
                                 </div>
-
-                                <div class="d-flex mb-5 align-items-center">
-                                    <label class="control control--checkbox mb-0">
-                                        <span class="caption">Remember me</span>
-                                        <input type="checkbox" />
-                                        <div class="control__indicator"></div>
-                                    </label>
-                                </div>
                                 <input type="submit" value="Log In" class="btn btn-block btn-primary">
-                                @if (ViewBag.error != null)
+                                @ViewBag.Error
+                                @if (ViewBag.Error is not null)
                                 {
-                                    <span class="badge badge-danger">@ViewBag.error</span>
+                                    <span style="font-size: 16px; margin-top: 30px" class="badge badge-danger">@ViewBag.Error</span>
                                 }
                             </form>
                         </div>

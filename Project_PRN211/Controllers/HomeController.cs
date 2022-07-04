@@ -5,6 +5,7 @@ using Project_PRN211.Logic;
 using Project_PRN211.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Project_PRN211.Controllers
 {
@@ -72,7 +73,7 @@ namespace Project_PRN211.Controllers
             }
             else
             {
-                ViewBag.error = "Login failed";
+                ViewBag.Error = "Login Failed! Please check your username and password!";
                 return RedirectToAction("Login");
             }
         }
@@ -82,19 +83,26 @@ namespace Project_PRN211.Controllers
             Employee e;
             if (jsonStr is null)
             {
+                ViewBag.Error = "Login Failed! Please check your username and password!";
                 return RedirectToAction("Login");
             }
             else
             {
                 e = JsonConvert.DeserializeObject<Employee>(jsonStr);
                 ViewBag.Users = e;
-
                 return View();
             }
         }
         public IActionResult logOut()
         {
             HttpContext.Session.Clear();
+            return RedirectToAction("Index");
+        }
+        public IActionResult bookRoom(short para1, string para2, string para3, DateTime para4, DateTime para5)
+        {
+            UserManager us = new UserManager();
+            us.AddGuest(para1, para2, para3, para4, para5);
+            
             return RedirectToAction("Index");
         }
     }
