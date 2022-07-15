@@ -1,5 +1,156 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Hotel - TIEN ANH CAPUCHINO</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="~/css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="~/css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="~/images/Logo_PRN211.png" type="image/png" />
+    <!-- Scrollbar Custom CSS -->
+    @*<link rel="stylesheet" href="~/css/jquery.mCustomScrollbar.min.css">*@
+</head>
+<!-- body -->
+<body class="main-layout">
+    <!-- loader  -->
+    @*<div class="loader_bg">
+    <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+    </div>*@
+    <!-- end loader -->
+    <!-- header -->
+    @await Html.PartialAsync("Header")
+
+    <div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="user" action="/Guest/UpdateGuest" method="post">
+                            <input type="hidden" class="form-control form-control-user" name="e.Id"
+                                   value="" />
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Guest Detail</h1>
+                                </div>
+                                <div class="form-group">
+                                    <label>RoomNo:</label>
+                                    <input type="text" disabled class="form-control form-control-user" required name="e.FullName"
+                                           value="1">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Full name</label>
+                                    <input type="text" name="e.DateBirth" class="form-control form-control-user"
+                                           value="" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Date of Birth</label>
+                                    <input type="date" name="e.DateBirth" class="form-control form-control-user"
+                                           value="" required max="@DateTime.Now">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-6 mb-sm-0">
+                                        <label>Gender: </label>
+                                        <input value="1" type="radio" name="e.Gender" />Male
+                                        <input value="0" type="radio" name="e.Gender" />FeMale
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mobile</label>
+                                    <input type="text" class="form-control form-control-user" required name="e.PhoneNumber"
+                                           value="">
+                                </div>
+                                <div class="form-group">
+                                    <label>E-mail</label>
+                                    <input type="text" class="form-control form-control-user" required name="e.Email"
+                                           value="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control form-control-user" required name="e.Email"
+                                           value="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Arrival Date</label>
+                                    <input type="date" name="e.DateBirth" class="form-control form-control-user"
+                                           value="" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Departure Date</label>
+                                    <input type="date" name="e.DateBirth" class="form-control form-control-user"
+                                           value="" required>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-6 mb-sm-0">
+                                        <label>Status: </label>
+                                        <input value="1" type="radio" name="e.Gender" />Activate
+                                        <input value="0" type="radio" name="e.Gender" />Deactivate
+                                    </div>
+                                </div>
+                                <input class="form-control form-control-user" style="display: block; width: 100px" type="submit" value="Save" name="Update" />
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+    </div>
+
+    <div id="about" class="about">
+        <div class="container-fluid">
+            <div class="row d_flex">
+                <div class="col-md-6">
+                    <div class="about_text">
+                        <div class="titlepage">
+                            <h2>About Our Hotel</h2>
+                            <p>The hotel was established in 2022 based on the project of the subject PRN211. The hotel is operated by only 1 member. However, the service quality is still among the top in Vietnam. The number of rooms is constantly updated to meet your needs. Room quality is also upgraded over time. Enjoy the excellent service of our hotel. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="about_img">
+                        <figure><img src="~/images/about_img.jpg" alt="#" /></figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @await Html.PartialAsync("Footer")
+    <!-- end footer -->
+    <!-- Javascript files-->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/jquery-3.0.0.min.js"></script>
+    <script src="~/js/plugin.js"></script>
+    <!-- sidebar -->
+    <script src="~/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/js/custom.js"></script>
+</body>
+</html>
+
+
+
+
