@@ -57,11 +57,12 @@ namespace Project_PRN211
                     pattern: "{controller}/{action}/{para1}/{para2}/{para3}/{para4}/{para5}"
                     );
             });
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "p1",
-                    pattern: "{controller}/{action}/{para1}"
+                    pattern: "{controller}/{action}/{para1=0}"
                     );
             });
         }

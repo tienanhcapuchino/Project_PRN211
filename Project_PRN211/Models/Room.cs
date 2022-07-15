@@ -13,11 +13,11 @@ namespace Project_PRN211.Models
         }
 
         public short RoomNo { get; set; }
-        public short? RoomType { get; set; }
+        public short? RoomTypeId { get; set; }
         public string Renter { get; set; }
         public int? Status { get; set; }
 
-        public virtual RoomType RoomTypeNavigation { get; set; }
+        public virtual RoomType RoomType { get; set; }
         public virtual ICollection<Guest> Guests { get; set; }
     }
 }

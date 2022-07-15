@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.Configuration;
 
 #nullable disable
 
@@ -28,8 +27,8 @@ namespace Project_PRN211.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-                optionsBuilder.UseSqlServer(config.GetConnectionString("ApConStr"));
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("server=TIEN-ANH-NH;database=SE1619_Project_Hotel;user=sa;password=123456");
             }
         }
 
@@ -117,23 +116,19 @@ namespace Project_PRN211.Models
 
                 entity.ToTable("Room");
 
-                entity.Property(e => e.Renter)
-                    .HasMaxLength(100)
-                    .IsFixedLength(true);
+                entity.Property(e => e.Renter).HasMaxLength(50);
 
-                entity.HasOne(d => d.RoomTypeNavigation)
+                entity.HasOne(d => d.RoomType)
                     .WithMany(p => p.Rooms)
-                    .HasForeignKey(d => d.RoomType)
+                    .HasForeignKey(d => d.RoomTypeId)
                     .HasConstraintName("FK_Room_RoomType");
             });
 
             modelBuilder.Entity<RoomType>(entity =>
             {
-                entity.HasKey(e => e.RoomType1);
-
                 entity.ToTable("RoomType");
 
-                entity.Property(e => e.RoomType1).HasColumnName("RoomType");
+                entity.Property(e => e.RoomTypeId).ValueGeneratedNever();
             });
 
             OnModelCreatingPartial(modelBuilder);

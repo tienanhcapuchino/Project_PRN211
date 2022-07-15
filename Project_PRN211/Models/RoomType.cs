@@ -12,7 +12,7 @@ namespace Project_PRN211.Models
             Rooms = new HashSet<Room>();
         }
 
-        public short RoomType1 { get; set; }
+        public short RoomTypeId { get; set; }
         public int? RoomPrice { get; set; }
         public string RoomImg { get; set; }
         public int? NumberOfPersons { get; set; }

@@ -44,25 +44,28 @@
     @await Html.PartialAsync("Header")
     <div class="">
         <div class="row d_flex" id="generalContent">
-            <div class="col-md-6">
-                <div class="about_text">
-                    <div class="titlepage">
-                        <form>
-                            <h2><input class="form-control form-control-user" type="submit" value="View All Customers" /></h2>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="about_text">
-                    <div class="titlepage">
-                        <form>
-                            <h2><input class="form-control form-control-user" type="submit" value="View All Customers" /></h2>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            
         </div>
+    </div>
+    <div class="container-fluid">
+        <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">RoomNo</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>mdo</td>
+                        <td>mdo</td>
+                    </tr>
+                </tbody>
+            </table>
     </div>
     <div id="about" class="about">
         <div class="container-fluid">

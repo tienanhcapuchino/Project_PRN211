@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FPT University\\SUMMER 2022\\PRN211\\Project\\Project_PRN211-Solution\\Project_PRN211\\Project_PRN211.csproj": {}
+    "D:\\FPT University\\SUMMER 2022\\PRN211\\Project\\Project_PRN211\\Project_PRN211\\Project_PRN211.csproj": {}
   },
   "projects": {
-    "D:\\FPT University\\SUMMER 2022\\PRN211\\Project\\Project_PRN211-Solution\\Project_PRN211\\Project_PRN211.csproj": {
+    "D:\\FPT University\\SUMMER 2022\\PRN211\\Project\\Project_PRN211\\Project_PRN211\\Project_PRN211.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPT University\\SUMMER 2022\\PRN211\\Project\\Project_PRN211-Solution\\Project_PRN211\\Project_PRN211.csproj",
+        "projectUniqueName": "D:\\FPT University\\SUMMER 2022\\PRN211\\Project\\Project_PRN211\\Project_PRN211\\Project_PRN211.csproj",
         "projectName": "Project_PRN211",
-        "projectPath": "D:\\FPT University\\SUMMER 2022\\PRN211\\Project\\Project_PRN211-Solution\\Project_PRN211\\Project_PRN211.csproj",
+        "projectPath": "D:\\FPT University\\SUMMER 2022\\PRN211\\Project\\Project_PRN211\\Project_PRN211\\Project_PRN211.csproj",
         "packagesPath": "C:\\Users\\tiena\\.nuget\\packages\\",
-        "outputPath": "D:\\FPT University\\SUMMER 2022\\PRN211\\Project\\Project_PRN211-Solution\\Project_PRN211\\obj\\",
+        "outputPath": "D:\\FPT University\\SUMMER 2022\\PRN211\\Project\\Project_PRN211\\Project_PRN211\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tiena\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -73,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

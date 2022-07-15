@@ -12,6 +12,8 @@ namespace Project_PRN211.Models
         public DateTime? PaymentDate { get; set; }
         public DateTime? ExpiredDate { get; set; }
         public string PaymentMode { get; set; }
+        public int? Status { get; set; }
+        public string Note { get; set; }
 
         public virtual Guest Guest { get; set; }
     }

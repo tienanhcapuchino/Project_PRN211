@@ -55,7 +55,9 @@ namespace Project_PRN211.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            UserManager us = new UserManager();
+
+            return View(us.getAllRoom());
         }
         public IActionResult Login()
         {
@@ -67,7 +69,7 @@ namespace Project_PRN211.Controllers
             Employee e1 = user.logged(para1, para2);
             string jsonStr = JsonConvert.SerializeObject(e1);
             HttpContext.Session.SetString("user", jsonStr);
-            if (e1 is not null)
+            if (e1 != null)
             {
                 return RedirectToAction("Admin");
             }
@@ -83,8 +85,7 @@ namespace Project_PRN211.Controllers
             Employee e;
             if (jsonStr is null)
             {
-                ViewBag.Error = "Login Failed! Please check your username and password!";
-                return View("/Views/Home/Login.cshtml");
+                return RedirectToAction("Login");
             }
             else
             {
@@ -101,8 +102,7 @@ namespace Project_PRN211.Controllers
         public IActionResult bookRoom(short para1, string para2, string para3, DateTime para4, DateTime para5)
         {
             UserManager us = new UserManager();
-            us.AddGuest(para1, para2, para3, para4, para5);
-            
+            //us.AddGuest(para1, para2, para3, para4, para5);
             return RedirectToAction("Index");
         }
     }
