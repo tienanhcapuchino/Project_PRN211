@@ -25,11 +25,6 @@
                                     <a class="nav-link" href="#about">About</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                        Show more
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" href="#contact">Contact us</a>
                                 </li>
                                 @if (ViewBag.Users is not null)
@@ -66,30 +61,7 @@
 <!-- end header inner -->
 <!-- end header -->
 <!-- banner -->
-<div class="collapse" id="collapseExample">
-    <div class="card card-body">
 
-        <section class="banner_main">
-            <div class="container" style="padding: -150px;">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="text-bg">
-                            <div class="padding_lert">
-                                <h1>WELCOME TO Tien Anh Capuchino'S HOTEL</h1>
-                                <span>Established in 2022</span>
-                                <p>This hotel is established based on project subject PRN211. It is also a self-catering hotel with only one employee and all positions</p>
-                                <a href="https://tienanhcapuchino.github.io/info_of_tienanh/">More Infomation</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
-
-@if (ViewBag.Users is null)
-{
     <section class="banner_main" style="padding: -150px;">
         <div class="container" >
             <div class="row">
@@ -106,4 +78,4 @@
             </div>
         </div>
     </section>
-}
+

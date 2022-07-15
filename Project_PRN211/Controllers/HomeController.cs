@@ -6,6 +6,7 @@ using Project_PRN211.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Project_PRN211.DataAccess;
 
 namespace Project_PRN211.Controllers
 {
@@ -89,11 +90,14 @@ namespace Project_PRN211.Controllers
             }
             else
             {
+
+                List<RoomTY> lstro = ManageDAO.listAllRoom();
                 e = JsonConvert.DeserializeObject<Employee>(jsonStr);
                 ViewBag.Users = e;
-                return View();
+                return View(lstro);
             }
         }
+
         public IActionResult logOut()
         {
             HttpContext.Session.Clear();

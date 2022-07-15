@@ -29,7 +29,7 @@ namespace Project_PRN211.Models
 
         public override string ToString()
         {
-            return $"{FullName}";
+            return $"{Username}";
         }
     }
 

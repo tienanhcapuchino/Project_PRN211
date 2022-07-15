@@ -1,5 +1,5 @@
-﻿
-
+﻿@using Project_PRN211.Models;
+@model List<RoomTY>
 
 
 <!DOCTYPE html>
@@ -22,16 +22,11 @@
     <link rel="stylesheet" href="~/css/style.css">
     <!-- Responsive-->
     <link rel="stylesheet" href="~/css/responsive.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <!-- fevicon -->
     <link rel="icon" href="~/images/Logo_PRN211.png" type="image/png" />
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="~/css/jquery.mCustomScrollbar.min.css">
-    <!-- Tweaks for older IEs-->
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    @*<link rel="stylesheet" href="~/css/jquery.mCustomScrollbar.min.css">*@
 </head>
 <!-- body -->
 <body class="main-layout">
@@ -44,28 +39,50 @@
     @await Html.PartialAsync("Header")
     <div class="">
         <div class="row d_flex" id="generalContent">
-            
         </div>
     </div>
     <div class="container-fluid">
-        <table class="table table-striped">
-                <thead>
+        <table class="table table-striped text-center">
+            <thead>
+                <tr>
+                    <th scope="col">RoomNo</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Number of person</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (RoomTY ro in @Model)
+                {
                     <tr>
-                        <th scope="col">RoomNo</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Status</th>
+                        <td>Room @ro.RoomNo</td>
+                        <td>@ro.RoomPrice VND</td>
+                        <td>@ro.NumberOfPersons</td>
+                        <td>
+                            @if (@ro.Status == 1)
+                            {
+                                <p style="color: red">Not Empty</p>
+                            }
+                            else
+                            {
+                                <p style="color: green">Empty</p>
+                            }
+                        </td>
+                        <td>
+                            @if (ro.Status == 0)
+                            {
+                                <a href="/Guest/InfoGuest">
+                                    <span class="material-symbols-outlined">
+                                        info
+                                    </span>
+                                </a>
+                            }
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>mdo</td>
-                        <td>mdo</td>
-                    </tr>
-                </tbody>
-            </table>
+                }
+            </tbody>
+        </table>
     </div>
     <div id="about" class="about">
         <div class="container-fluid">
@@ -98,7 +115,6 @@
     <!-- sidebar -->
     <script src="~/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="~/js/custom.js"></script>
-    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 </body>
 </html>
 
