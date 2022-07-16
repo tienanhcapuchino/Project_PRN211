@@ -36,6 +36,77 @@
     <!-- header -->
     @await Html.PartialAsync("Header")
 
+    <div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="user" action="/Guest/DoAddGuest" method="post">
+                            <input type="hidden" class="form-control form-control-user" name="e.Id"
+                                   value="" />
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Guest Detail</h1>
+                                </div>
+                                <div class="form-group">
+                                    <label>RoomNo:</label>
+                                    <input type="text" disabled class="form-control form-control-user" required name="e.FullName"
+                                           value="1">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Full name</label>
+                                    <input type="text" name="e.DateBirth" class="form-control form-control-user"
+                                           value="" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Date of Birth</label>
+                                    <input type="date" name="e.DateBirth" class="form-control form-control-user"
+                                           value="" required max="@DateTime.Now">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-6 mb-sm-0">
+                                        <label>Gender: </label>
+                                        <input value="1" type="radio" name="e.Gender" />Male
+                                        <input value="0" type="radio" name="e.Gender" />FeMale
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mobile</label>
+                                    <input type="text" class="form-control form-control-user" required name="e.PhoneNumber"
+                                           value="">
+                                </div>
+                                <div class="form-group">
+                                    <label>E-mail</label>
+                                    <input type="text" class="form-control form-control-user" required name="e.Email"
+                                           value="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control form-control-user" required name="e.Email"
+                                           value="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Arrival Date</label>
+                                    <input type="date" name="e.DateBirth" class="form-control form-control-user"
+                                           value="" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Departure Date</label>
+                                    <input type="date" name="e.DateBirth" class="form-control form-control-user"
+                                           value="" required>
+                                </div>
+                                <input class="form-control form-control-user" style="display: block; width: 100px" type="submit" value="Save" name="Update" />
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div id="about" class="about">
         <div class="container-fluid">
@@ -63,11 +134,6 @@
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/popper.min.js"></script>
     <script src="~/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/jquery-3.0.0.min.js"></script>
-    <script src="~/js/plugin.js"></script>
-    <!-- sidebar -->
-    <script src="~/js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="~/js/custom.js"></script>
 </body>
 </html>
 

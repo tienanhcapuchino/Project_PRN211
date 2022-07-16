@@ -42,7 +42,23 @@
         </div>
     </div>
     <div class="container-fluid">
-        <a>Add new Guest</a>
+        <div class="row">
+            <div class="col-md-10"></div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"></label>
+                    <form action="" method="post" onchange="this.form.submit()">
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>All status</option>
+                            <option>Empty</option>
+                            <option>Not Empty</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
         <table class="table table-striped text-center">
             <thead>
                 <tr>
@@ -63,19 +79,27 @@
                         <td>
                             @if (@ro.Status == 1)
                             {
-                                <p style="color: red">Not Empty</p>
+                                <p class="text text-danger">Not Empty</p>
                             }
                             else
                             {
-                                <p style="color: green">Empty</p>
+                                <p class="text text-success">Empty</p>
                             }
                         </td>
                         <td>
-                            @if (ro.Status == 0)
+                            @if (ro.Status == 1)
                             {
                                 <a href="/Guest/InfoGuest">
                                     <span class="material-symbols-outlined">
                                         info
+                                    </span>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="/Guest/AddGuest">
+                                    <span class="material-symbols-outlined">
+                                        add_circle
                                     </span>
                                 </a>
                             }
@@ -106,16 +130,9 @@
     </div>
 
     @await Html.PartialAsync("Footer")
-    <!-- end footer -->
-    <!-- Javascript files-->
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/popper.min.js"></script>
     <script src="~/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/jquery-3.0.0.min.js"></script>
-    <script src="~/js/plugin.js"></script>
-    <!-- sidebar -->
-    <script src="~/js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="~/js/custom.js"></script>
 </body>
 </html>
 

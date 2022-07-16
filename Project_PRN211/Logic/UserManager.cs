@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Project_PRN211.DataAccess;
 
 namespace Project_PRN211.Logic
 {
@@ -31,6 +32,10 @@ namespace Project_PRN211.Logic
         public Employee GetEmployee(int id)
         {
             return context.Employees.FirstOrDefault(x => x.Id == id);
+        }
+        public List<int> getAllRoomNo()
+        {
+            return ManageDAO.getAllRoom();
         }
         public void EditProfile(Employee e)
         {

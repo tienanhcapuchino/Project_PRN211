@@ -25,5 +25,16 @@ namespace Project_PRN211.DataAccess
             }
             return lstRo;
         }
+        public static List<int> getAllRoom()
+        {
+            List<int> lstROO = new List<int>();
+            string sql = @"select RoomNo from Room where status = 0";
+            DataTable dt = DAO.getDataBySql(sql);
+            foreach(DataRow dr in dt.Rows)
+            {
+                lstROO.Add(Convert.ToInt32(dr[0]));
+            }
+            return lstROO;
+        }
     }
 }
