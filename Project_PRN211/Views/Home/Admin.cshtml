@@ -47,11 +47,11 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="exampleFormControlSelect1"></label>
-                    <form action="" method="post" onchange="this.form.submit()">
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>All status</option>
-                            <option>Empty</option>
-                            <option>Not Empty</option>
+                    <form action="/Home/searchStatus" method="post">
+                        <select name="para1" class="form-control" onchange="this.form.submit()" id="exampleFormControlSelect1">
+                            <option value="2">All status</option>
+                            <option value="0" @(ViewBag.Sta == 0 ? "selected" : "")>Empty</option>
+                            <option value="1" @(ViewBag.Sta == 1 ? "selected" : "")>Not Empty</option>
                         </select>
                     </form>
                 </div>

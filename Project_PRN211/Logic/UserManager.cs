@@ -47,6 +47,10 @@ namespace Project_PRN211.Logic
             em.Email = e.Email;
             context.SaveChanges();
         }
+        public List<RoomTY> searchStatus(int status)
+        {
+            return ManageDAO.searchByStatus(status);
+        }
         public List<int?> getAllRoom()
         {
             List<int?> lst = new List<int?>();

@@ -63,7 +63,30 @@ namespace Project_PRN211.Controllers
         }
         public IActionResult searchStatus(int para1)
         {
-            return View();
+            UserManager us = new UserManager();
+            string jsonStr = HttpContext.Session.GetString("user");
+            Employee e;
+            if (jsonStr is null)
+            {
+                return RedirectToAction("Login");
+            }
+            else
+            {
+
+                List<RoomTY> lstro = new List<RoomTY>();
+                if (para1 == 2)
+                {
+                    lstro = ManageDAO.listAllRoom();
+                } else
+                {
+                    lstro = us.searchStatus(para1);
+                }
+                e = JsonConvert.DeserializeObject<Employee>(jsonStr);
+                ViewBag.Users = e;
+                //ViewBag.ListSearch = lstro;
+                ViewBag.Sta = para1;
+                return View("/Views/Home/Admin.cshtml", lstro);
+            }
         }
     }
 }
