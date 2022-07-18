@@ -37,7 +37,10 @@ namespace Project_PRN211.Models
             DepartureDate = departureDate;
             Status = status;
         }
-
+        public override string ToString()
+        {
+            return $"{GuestId} - {FullName} - {Gender} - {Email} - {Dob} - {PhoneNo}";
+        }
         public virtual Room RoomNoNavigation { get; set; }
         public virtual ICollection<Bill> Bills { get; set; }
     }

@@ -33,6 +33,10 @@ namespace Project_PRN211.Logic
         {
             return context.Employees.FirstOrDefault(x => x.Id == id);
         }
+        public Guest getGuest(short room)
+        {
+            return context.Guests.FirstOrDefault(x => x.RoomNo == room);
+        }
         public List<int> getAllRoomNo()
         {
             return ManageDAO.getAllRoom();
@@ -48,10 +52,33 @@ namespace Project_PRN211.Logic
             context.SaveChanges();
         }
 
+        public void addGuest(Guest gu, short roomID)
+        {
+            gu.RoomNo = roomID;
+            gu.Status = 1;
+            context.Guests.Add(gu);
+            context.SaveChanges();
+        }
         public List<RoomTY> searchStatus(int status)
         {
             return ManageDAO.searchByStatus(status);
         }
+
+        public void UpdateGuest(Guest gu)
+        {
+            Guest g = context.Guests.FirstOrDefault(x => x.GuestId == gu.GuestId);
+            g.FullName = gu.FullName;
+            g.Dob = gu.Dob;
+            g.Gender = gu.Gender;
+            g.PhoneNo = gu.PhoneNo;
+            g.Address = gu.Address;
+            g.ArrivalDate = gu.ArrivalDate;
+            g.DepartureDate = gu.DepartureDate;
+            g.Email = gu.Email;
+            g.Status = 1;
+            context.SaveChanges();    
+        }
+
         public List<int?> getAllRoom()
         {
             List<int?> lst = new List<int?>();

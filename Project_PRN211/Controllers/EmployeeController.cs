@@ -68,6 +68,11 @@ namespace Project_PRN211.Controllers
                         ViewBag.Err = "Email is already exists!";
                         return View("/Views/Employee/UpdateProfile.cshtml", use.GetEmployee(em.Id));
                     }
+                    if (e.PhoneNumber.Equals(emp.PhoneNumber))
+                    {
+                        ViewBag.Err = "Phone number is already exists!";
+                        return View("/Views/Employee/UpdateProfile.cshtml", use.GetEmployee(em.Id));
+                    }
                 }
                 if (e.PhoneNumber.Length == 10 && e.PhoneNumber.StartsWith("0"))
                 {
