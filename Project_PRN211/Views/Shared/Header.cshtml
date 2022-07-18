@@ -8,9 +8,19 @@
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                     <div class="full">
                         <div class="center-desk">
-                            <div class="logo">
-                                <a style="font-size: 25px;" href="Home">Tien Anh Capuchino</a>
-                            </div>
+                            @if (ViewBag.Users is not null)
+                            {
+                                <div class="logo">
+                                    <a style="font-size: 25px;" href="/Home/Admin">Tien Anh Capuchino</a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="logo">
+                                    <a style="font-size: 25px;" href="Home">Tien Anh Capuchino</a>
+                                </div>
+
+                            }
                         </div>
                     </div>
                 </div>
@@ -41,13 +51,15 @@
                             else
                             {
                                 <div class="sign_btn"><a href="/Home/logOut">Log out</a></div>
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Menu
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="/Employee/UpdateProfile">Profile</a>
-                                        <a class="dropdown-item" href="/Employee/ChangePass">Change password</a>
+                                <div class="sign_btn">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Menu
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="/Employee/UpdateProfile">Profile</a>
+                                            <a class="dropdown-item" href="/Employee/ChangePass">Change password</a>
+                                        </div>
                                     </div>
                                 </div>
                             }
@@ -61,21 +73,19 @@
 <!-- end header inner -->
 <!-- end header -->
 <!-- banner -->
-
-    <section class="banner_main" style="padding: -150px;">
-        <div class="container" >
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="text-bg">
-                        <div class="padding_lert">
-                            <h1>WELCOME TO Tien Anh Capuchino'S HOTEL</h1>
-                            <span>Established in 2022</span>
-                            <p>This hotel is established based on project subject PRN211. It is also a self-catering hotel with only one employee and all positions</p>
-                            <a href="https://tienanhcapuchino.github.io/info_of_tienanh/">More Infomation</a>
-                        </div>
+<section class="banner_main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-bg">
+                    <div class="padding_lert">
+                        <h1>WELCOME TO Tien Anh Capuchino'S HOTEL</h1>
+                        <span>Established in 2022</span>
+                        <p>This hotel is established based on project subject PRN211. It is also a self-catering hotel with only one employee and all positions</p>
+                        <a href="https://tienanhcapuchino.github.io/info_of_tienanh/">More Infomation</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
+</section>

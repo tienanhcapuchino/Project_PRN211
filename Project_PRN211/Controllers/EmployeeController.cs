@@ -59,14 +59,14 @@ namespace Project_PRN211.Controllers
                 }
                 if (!e.Email.Contains("@")){
                     ViewBag.Err = "Email is invalid!";
-                    return RedirectToAction("UpdateProfile");
+                    return View("/Views/Employee/UpdateProfile.cshtml", use.GetEmployee(em.Id));
                 }
                 foreach (Employee emp in lstEM)
                 {
                     if (e.Email.Equals(emp.Email))
                     {
                         ViewBag.Err = "Email is already exists!";
-                        return RedirectToAction("UpdateProfile");
+                        return View("/Views/Employee/UpdateProfile.cshtml", use.GetEmployee(em.Id));
                     }
                 }
                 if (e.PhoneNumber.Length == 10 && e.PhoneNumber.StartsWith("0"))
@@ -75,11 +75,12 @@ namespace Project_PRN211.Controllers
                 } else
                 {
                     ViewBag.Err = "Phone number must have 10 numbers and start with 0!";
-                    return RedirectToAction("UpdateProfile");
+                    return View("/Views/Employee/UpdateProfile.cshtml", use.GetEmployee(em.Id));
                 }
                 use.EditProfile(e);
                 ViewBag.Users = e.FullName;
-                return RedirectToAction("UpdateProfile");
+                ViewBag.ok = 1;
+                return View("/Views/Employee/UpdateProfile.cshtml", use.GetEmployee(em.Id));
                 //return $"{em.FullName} - {e.FullName} - {em.Id} - {e.Id}";
             }
         }
@@ -98,8 +99,11 @@ namespace Project_PRN211.Controllers
                 return View();
             }
         }
-        public IActionResult DoChangePass(Employee e)
+        public IActionResult DoChangePass()
         {
+            string oldPass = Request.Form["PassNow"];
+            string newPass = Request.Form["passNew"];
+            string repass = Request.Form["re_pass"];
             string jsonstr = HttpContext.Session.GetString("user");
             Employee em;
             if (jsonstr is null)
@@ -112,10 +116,30 @@ namespace Project_PRN211.Controllers
                 using (var context = new SE1619_Project_HotelContext())
                 {
                     em = context.Employees.FirstOrDefault(x => x.Id == em.Id);
-                    em.Password = e.Password;
+                    
+                    if (!oldPass.Equals(em.Password))
+                    {
+                        ViewBag.err = "Old password is not correct!";
+                        ViewBag.oldPa = oldPass;
+                        ViewBag.newPa = newPass;
+                        ViewBag.rePa = repass;
+                        return View("/Views/Employee/ChangePass.cshtml");
+                    }
+                    if (!newPass.Equals(repass))
+                    {
+                        ViewBag.err = "Re-password is not match with new password!";
+                        ViewBag.oldPa = oldPass;
+                        ViewBag.newPa = newPass;
+                        ViewBag.rePa = repass;
+                        return View("/Views/Employee/ChangePass.cshtml");
+                    }
+                    em.Password = newPass;
+                    context.Update(em);
                     context.SaveChanges();
                 }
-                return RedirectToAction("ChangePass");
+                //return $"{oldPass} - {newPass} - {repass}";
+                HttpContext.Session.Remove("user");
+                return View("/Views/Home/Login.cshtml");
             }
         }
     }

@@ -37,10 +37,10 @@
     <!-- end loader -->
     <!-- header -->
     @await Html.PartialAsync("Header")
-    <div class="">
+    @*<div class="">
         <div class="row d_flex" id="generalContent">
         </div>
-    </div>
+    </div>*@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-10"></div>
@@ -89,7 +89,7 @@
                         <td>
                             @if (ro.Status == 1)
                             {
-                                <a href="/Guest/InfoGuest">
+                                <a href="/Guest/InfoGuest/@ro.RoomNo">
                                     <span class="material-symbols-outlined">
                                         info
                                     </span>
@@ -97,7 +97,7 @@
                             }
                             else
                             {
-                                <a href="/Guest/AddGuest">
+                                <a href="/Guest/AddGuest/@ro.RoomNo">
                                     <span class="material-symbols-outlined">
                                         add_circle
                                     </span>

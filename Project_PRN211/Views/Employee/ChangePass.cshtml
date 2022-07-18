@@ -1,10 +1,5 @@
 ﻿
 
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,22 +49,27 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Change Your Password</h1>
                                     </div>
-                                    <form class="user" action="ChangePassWord" method="POST">
+                                    <form class="user" action="/Employee/DoChangePass" method="POST">
                                         <input type="hidden" name="go" value="ChangeForm" />
                                         <div class="form-group">
-                                            <input name="PassNow" type="password" class="form-control form-control-user"
-                                                   value="${PassNow}"
+                                            <input name="PassNow" type="password" required class="form-control form-control-user"
+                                                   value="@ViewBag.oldPa"
                                                    id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Your current password...">
                                         </div>
                                         <div class="form-group">
-                                            <input value="${passNew}" name="passNew" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Your new password">
+                                            <input value="@ViewBag.newPa" required name="passNew" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Your new password">
                                         </div>
                                         <div class="form-group">
-                                            <input value="" name="re_pass" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Your new password">
+                                            <input value="@ViewBag.rePa" required name="re_pass" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Your new password">
                                         </div>
-                                        <span style="color: red;"></span>
                                         <input class="btn btn-primary btn-user btn-block" type="submit" name="submit" value="Submit" />
                                     </form>
+                                    @if (ViewBag.err is not null)
+                                    {
+                                        <div class="alert alert-danger" role="alert">
+                                            @ViewBag.err
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>
