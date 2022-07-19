@@ -123,8 +123,16 @@ namespace Project_PRN211.Controllers
                     ViewBag.Rom = ro1;
                     return View("Views/Guest/AddGuest.cshtml", gu);
                 }
-
+                Bill b = new Bill();
                 use.addGuest(gu, ro1);
+                using (var context = new SE1619_Project_HotelContext())
+                {
+                    b.GuestId = gu.GuestId;
+                    b.Status = 0;
+                    b.PaymentMode = "Cash";
+                    context.Bills.Add(b);
+                    context.SaveChanges();
+                }
                 use.UpdateStatusRom(ro1);
                 ViewBag.users = em;
                 ViewBag.ok = 1;

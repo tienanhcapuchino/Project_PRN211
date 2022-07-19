@@ -1,5 +1,5 @@
-﻿@using Project_PRN211.Models;
-@model Guest
+﻿@using Project_PRN211.Models
+@model Bill
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,15 +35,14 @@
     <!-- end loader -->
     <!-- header -->
     @await Html.PartialAsync("Header")
-
     <div class="container">
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <form class="user" action="/Guest/UpdateGuest/@Model.RoomNo" method="post">
-                            <input type="hidden" class="form-control form-control-user" name="gu.GuestId"
+                        <form class="user" action="/Bill/CheckOut/@Model.GuestId" method="post">
+                            <input type="hidden" class="form-control form-control-user" name="para1"
                                    value="@Model.GuestId" />
                             <div class="p-5">
                                 @if (ViewBag.ok == 1)
@@ -53,7 +52,7 @@
                                     </div>
                                 }
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Guest Detail</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">Show Bill: </h1>
                                 </div>
                                 @*<div class="form-group">
                                 <label>RoomNo:</label>
@@ -63,49 +62,40 @@
 
                                 <div class="form-group">
                                     <label>Full name</label>
-                                    <input type="text" name="gu.FullName" class="form-control form-control-user"
-                                           value="@Model.FullName" required>
+                                    <input type="text" name="gu.Dob" disabled class="form-control form-control-user"
+                                           value="@ViewBag.GuestName" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Date of Birth</label>
+                                    <label>Payment Date</label>
                                     <input type="date" name="gu.Dob" class="form-control form-control-user"
-                                           value="@Model.Dob?.ToString("yyyy-MM-dd")" required max="@DateTime.Now">
+                                           value="@DateTime.Now.ToString("yyyy-MM-dd")" disabled>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
-                                        <label>Gender: </label>
-                                        <input type="radio" name="gu.Gender" value="true" @(Model.Gender == true ? "checked" : "") />Male
-                                        <input type="radio" name="gu.Gender" value="false" @(Model.Gender == false ? "checked" : "") />FeMale
+                                        <label>Payment Mode: </label>
+                                        <select class="form-control form-control-user">
+                                            <option value="Cash" @(Model.PaymentMode.Equals("Cash") ? "selected" : "")>Cash</option>
+                                            <option value="ATM/VISA" @(Model.PaymentMode.Equals("ATM/VISA") ? "selected" : "")>ATM/Visa</option>
+                                            <option value="MOTO" @(Model.PaymentMode.Equals("MOTO") ? "selected" : "")>MOTO</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Mobile</label>
-                                    <input type="text" class="form-control form-control-user" required name="gu.PhoneNo"
-                                           value="@Model.PhoneNo">
+                                    <label>Total Price</label>
+                                    <input type="text" name="gu.Dob" class="form-control form-control-user"
+                                           value="@ViewBag.TotalPrice" disabled>
                                 </div>
                                 <div class="form-group">
-                                    <label>E-mail</label>
-                                    <input type="email" class="form-control form-control-user" required name="gu.Email"
-                                           value="@Model.Email">
+                                    <label>Note</label>
+                                    @*<input type="text" class="form-control form-control-user" required name="gu.PhoneNo"
+                                    value="@Model.Note">*@
+                                    <textarea class="form-control form-control-user">
+                                        @Model.Note
+                                    </textarea>
                                 </div>
-                                <div class="form-group">
-                                    <label>Address</label>
-                                    <input type="text" class="form-control form-control-user" required name="gu.Address"
-                                           value="@Model.Address">
-                                </div>
-                                <div class="form-group">
-                                    <label>Arrival Date</label>
-                                    <input type="date" name="gu.ArrivalDate" class="form-control form-control-user"
-                                           value="@Model.ArrivalDate?.ToString("yyyy-MM-dd")" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Departure Date</label>
-                                    <input type="date" name="gu.DepartureDate" class="form-control form-control-user"
-                                           value="@Model.DepartureDate?.ToString("yyyy-MM-dd")" required>
-                                </div>
+
                                 <div class="d-flex flex-row">
-                                    <input class="btn btn-primary p-2" style="display: block; width: 100px" type="submit" value="Save" name="Update" />
-                                    <a href="/Bill/ViewBill/@Model.RoomNo" class="btn btn-outline-primary p-2">Check out</a>
+                                    <input class="btn btn-primary p-2" style="display: block; width: 100px" type="submit" value="Check out" name="Update" />
                                 </div>
                                 @if (ViewBag.Err is not null)
                                 {
@@ -121,7 +111,6 @@
             </div>
         </div>
     </div>
-    <!-- /.container-fluid -->
 
     <div id="about" class="about">
         <div class="container-fluid">
@@ -151,7 +140,3 @@
     <script src="~/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
-
-

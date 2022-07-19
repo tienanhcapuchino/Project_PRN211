@@ -81,6 +81,13 @@ namespace Project_PRN211.Logic
             return ManageDAO.searchByStatus(status);
         }
 
+        public int getRoomPrice(int roID)
+        {
+            int n = 0;
+
+            return n;
+        }
+
         public void UpdateGuest(Guest gu)
         {
             Guest g = context.Guests.FirstOrDefault(x => x.GuestId == gu.GuestId);
