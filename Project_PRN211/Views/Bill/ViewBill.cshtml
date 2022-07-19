@@ -1,4 +1,5 @@
-﻿@using Project_PRN211.Models
+﻿
+@using Project_PRN211.Models
 @model Bill
 
 <!DOCTYPE html>
@@ -50,7 +51,7 @@
                                 @if (ViewBag.ok == 1)
                                 {
                                     <div id="alertdiv" class="alert alert-success" role="alert">
-                                        Update successfully!
+                                        Checkout successfully!
                                     </div>
                                 }
                                 <div class="text-center">
@@ -81,11 +82,26 @@
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-6 mb-sm-0">
                                         <label>Payment Mode: </label>
-                                        <select class="form-control form-control-user" name="b.PaymentMode">
-                                            <option value="Cash" @(Model.PaymentMode.Equals("Cash") ? "selected" : "")>Cash</option>
-                                            <option value="ATM/VISA" @(Model.PaymentMode.Equals("ATM/VISA") ? "selected" : "")>ATM/Visa</option>
-                                            <option value="MOTO" @(Model.PaymentMode.Equals("MOTO") ? "selected" : "")>MOTO</option>
-                                        </select>
+                                        @*<select class="form-control form-control-user" name="b.PaymentMode">
+                                        <option value="Cash" @(Model.PaymentMode.Equals("Cash") ? "selected" : "")>Cash</option>
+                                        <option value="ATM/VISA" @(Model.PaymentMode.Equals("ATM/VISA") ? "selected" : "")>ATM/Visa</option>
+                                        <option value="MOTO" @(Model.PaymentMode.Equals("MOTO") ? "selected" : "")>MOTO</option>
+                                        </select>*@
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="cash">
+                                                <input class="form" id="cash" type="radio" name="b.PaymentMode" value="Cash" @(Model.PaymentMode.Equals("Cash") ? "checked" : "") />Cash
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="atm">
+                                                <input id="atm" type="radio" name="b.PaymentMode" value="ATM/VISA" @(Model.PaymentMode.Equals("ATM/VISA") ? "checked" : "") />ATM/Visa
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="moto">
+                                                <input id="moto" type="radio" name="b.PaymentMode" value="MOTO" @(Model.PaymentMode.Equals("MOTO") ? "checked" : "") />MOTO
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">

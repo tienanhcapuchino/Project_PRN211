@@ -64,7 +64,11 @@ namespace Project_PRN211.Controllers
         }
         public IActionResult CheckOut(Bill b, int para1)
         {
+            int price = 0;
+            double totalPrice = 0;
             Employee em;
+            Guest gu = new Guest();
+            Bill b1 = new Bill();
             UserManager us = new UserManager();
             string jsonstr = HttpContext.Session.GetString("user");
             if (jsonstr is null)
@@ -74,10 +78,38 @@ namespace Project_PRN211.Controllers
             else
             {
                 em = JsonConvert.DeserializeObject<Employee>(jsonstr);
+                using (var context = new SE1619_Project_HotelContext())
+                {
+                    context.RoomTypes.ToList();
+                    gu = context.Guests.FirstOrDefault(x => x.RoomNo == para1);
+                    b1 = context.Bills.FirstOrDefault(x => x.GuestId == gu.GuestId);
+                    Room ro = context.Rooms.FirstOrDefault(x => x.RoomNo == para1);
+                    int? priceRoom = ro.RoomType.RoomPrice;
+                    price = Int32.Parse(priceRoom + "");
+                    try
+                    {
+                        b.Note = b.Note.Trim();
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                    context.SaveChanges();
+                }
                 us.updateBill(b);
+                us.deactivateRom(para1);
+                DateTime from = Convert.ToDateTime(gu.ArrivalDate);
+                DateTime to = DateTime.Now;
+                int days = us.countDays(from, to);
+                totalPrice = days * price;
+                ViewBag.TotalPrice = totalPrice;
+                ViewBag.GuestName = gu.FullName;
+                ViewBag.GuestId = gu.GuestId;
+                ViewBag.Days = days;
+                ViewBag.RomNO = para1;
                 ViewBag.users = em;
                 ViewBag.ok = 1;
-                return View("/Views/Bill/ViewBill.cshtml");
+                return View("/Views/Bill/ViewBill.cshtml", b1);
             }
         }
     }
