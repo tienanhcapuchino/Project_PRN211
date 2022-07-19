@@ -63,6 +63,14 @@ namespace Project_PRN211.Controllers
                         return View("Views/Guest/InfoGuest.cshtml", gu);
                     }
                 }
+                if (use.checkPhone(gu.PhoneNo))
+                {
+                    
+                } else
+                {
+                    ViewBag.err = "Phone number must be 10 numbers and starts with 0!";
+                    return View("Views/Guest/InfoGuest.cshtml", gu);
+                }
                 use.UpdateGuest(gu);
                 ViewBag.ok = 1;
                 //ViewBag.roomno = g.RoomNo;
@@ -83,28 +91,47 @@ namespace Project_PRN211.Controllers
             else
             {
                 em = JsonConvert.DeserializeObject<Employee>(jsonstr);
+                ViewBag.Rom = para1;
                 ViewBag.users = em;
-                return View(us.getGuest(para1));
+                return View(new Guest());
             }
         }
-        public IActionResult DoAddGuest(Guest gu, short para1)
+        public IActionResult DoAddGuest(Guest gu, string para1)
         {
+            string ro = Request.Form["roomNo"];
             Employee em;
             Guest g;
             UserManager use = new UserManager();
             string jsonstr = HttpContext.Session.GetString("user");
             if (jsonstr is null)
             {
+                
                 return View("/Views/Home/Login.cshtml");
             }
             else
             {
                 em = JsonConvert.DeserializeObject<Employee>(jsonstr);
-                use.addGuest(gu, para1);
+                int ro1 = Int32.Parse(ro);
+                g = use.getGuest(ro1);
+                if (use.checkPhone(gu.PhoneNo))
+                {
+
+                }
+                else
+                {
+                    ViewBag.Err = "Phone number must be 10 numbers and starts with 0!";
+                    ViewBag.Rom = ro1;
+                    return View("Views/Guest/AddGuest.cshtml", gu);
+                }
+
+                use.addGuest(gu, ro1);
+                use.UpdateStatusRom(ro1);
                 ViewBag.users = em;
                 ViewBag.ok = 1;
+                ViewBag.Rom = ro1;
                 return View("Views/Guest/AddGuest.cshtml", gu);
             }
+            
         }
     }
 }

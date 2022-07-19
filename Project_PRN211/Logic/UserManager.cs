@@ -33,7 +33,7 @@ namespace Project_PRN211.Logic
         {
             return context.Employees.FirstOrDefault(x => x.Id == id);
         }
-        public Guest getGuest(short room)
+        public Guest getGuest(int room)
         {
             return context.Guests.FirstOrDefault(x => x.RoomNo == room);
         }
@@ -52,9 +52,26 @@ namespace Project_PRN211.Logic
             context.SaveChanges();
         }
 
-        public void addGuest(Guest gu, short roomID)
+        public bool checkPhone(string s)
         {
-            gu.RoomNo = roomID;
+            if (s.StartsWith("0") && s.Length == 10)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+        public void UpdateStatusRom(int room)
+        {
+            short ro = (short)room;
+            Room ro1 = context.Rooms.FirstOrDefault(x => x.RoomNo == ro);
+            ro1.Status = 1;
+            context.SaveChanges();
+        }
+        public void addGuest(Guest gu, int roomID)
+        {
+            gu.RoomNo = short.Parse(roomID + "");
             gu.Status = 1;
             context.Guests.Add(gu);
             context.SaveChanges();
