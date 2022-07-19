@@ -69,6 +69,13 @@ namespace Project_PRN211.Logic
             ro1.Status = 1;
             context.SaveChanges();
         }
+        public void deactivateRom(int room)
+        {
+            short ro = (short)room;
+            Room ro1 = context.Rooms.FirstOrDefault(x => x.RoomNo == ro);
+            ro1.Status = 0;
+            context.SaveChanges();
+        }
         public void addGuest(Guest gu, int roomID)
         {
             gu.RoomNo = short.Parse(roomID + "");
@@ -81,10 +88,14 @@ namespace Project_PRN211.Logic
             return ManageDAO.searchByStatus(status);
         }
 
-        public int getRoomPrice(int roID)
+        public int countDays(DateTime from, DateTime to)
         {
             int n = 0;
-
+            while (from.CompareTo(to) <= 0)
+            {
+                from = from.AddDays(1);
+                n++;
+            }
             return n;
         }
 
@@ -108,6 +119,16 @@ namespace Project_PRN211.Logic
             List<int?> lst = new List<int?>();
             lst = context.RoomTypes.Select(x => x.NumberOfPersons).ToList();
             return lst;
+        }
+        public void updateBill(Bill b)
+        {
+            Bill bi = context.Bills.FirstOrDefault(x => x.GuestId == b.GuestId);
+            bi.PaymentDate = DateTime.Now;
+            bi.ExpiredDate = DateTime.Now.AddDays(1);
+            bi.PaymentMode = b.PaymentMode;
+            bi.Status = 1;
+            bi.Note = b.Note;
+            context.SaveChanges();
         }
     }
 }
