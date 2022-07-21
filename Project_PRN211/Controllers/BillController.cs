@@ -67,6 +67,7 @@ namespace Project_PRN211.Controllers
             int price = 0;
             double totalPrice = 0;
             Employee em;
+            Room ro = new Room();
             Guest gu = new Guest();
             Bill b1 = new Bill();
             UserManager us = new UserManager();
@@ -83,7 +84,7 @@ namespace Project_PRN211.Controllers
                     context.RoomTypes.ToList();
                     gu = context.Guests.FirstOrDefault(x => x.RoomNo == para1);
                     b1 = context.Bills.FirstOrDefault(x => x.GuestId == gu.GuestId);
-                    Room ro = context.Rooms.FirstOrDefault(x => x.RoomNo == para1);
+                    ro = context.Rooms.FirstOrDefault(x => x.RoomNo == para1);
                     int? priceRoom = ro.RoomType.RoomPrice;
                     price = Int32.Parse(priceRoom + "");
                     try
@@ -98,6 +99,15 @@ namespace Project_PRN211.Controllers
                 }
                 us.updateBill(b);
                 us.deactivateRom(para1);
+                using (var conten = new SE1619_Project_HotelContext())
+                {
+                    gu.Status = 0;
+                    ro.Status = 0;
+                    conten.Update(ro);
+                    conten.Update(gu);
+                    conten.SaveChanges();
+                }
+                
                 DateTime from = Convert.ToDateTime(gu.ArrivalDate);
                 DateTime to = DateTime.Now;
                 int days = us.countDays(from, to);

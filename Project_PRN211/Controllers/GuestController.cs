@@ -19,6 +19,7 @@ namespace Project_PRN211.Controllers
         {
             Employee em;
             Guest gu = new Guest();
+            List<Guest> lstGu = new List<Guest>();
             string jsonstr = HttpContext.Session.GetString("user");
             if (jsonstr is null)
             {
@@ -29,7 +30,16 @@ namespace Project_PRN211.Controllers
                 em = JsonConvert.DeserializeObject<Employee>(jsonstr);
                 using (var context = new SE1619_Project_HotelContext())
                 {
-                    gu = context.Guests.FirstOrDefault(x => x.RoomNo == para1);
+                    context.Guests.ToList();
+                    lstGu = context.Guests.Where(x => x.RoomNo == para1).ToList();
+                }
+                foreach (Guest gu1 in lstGu)
+                {
+                    if (gu1.Status == 1)
+                    {
+                        gu = gu1;
+                        break;
+                    }
                 }
                 ViewBag.users = em;
                 return View(gu);
@@ -53,16 +63,17 @@ namespace Project_PRN211.Controllers
                 em = JsonConvert.DeserializeObject<Employee>(jsonstr);
                 using (var context = new SE1619_Project_HotelContext())
                 {
+                    context.Guests.ToList();
                     lstGu = context.Guests.Where(x => x.GuestId != g.GuestId).ToList();
                 }
-                foreach (Guest g2 in lstGu)
-                {
-                    if (gu.Email.Equals(g2.Email))
-                    {
-                        ViewBag.err = "Email is already exists!";
-                        return View("Views/Guest/InfoGuest.cshtml", gu);
-                    }
-                }
+                //foreach (Guest g2 in lstGu)
+                //{
+                //    if (gu.Email.Equals(g2.Email))
+                //    {
+                //        ViewBag.err = "Email is already exists!";
+                //        return View("Views/Guest/InfoGuest.cshtml", gu);
+                //    }
+                //}
                 if (use.checkPhone(gu.PhoneNo))
                 {
                     

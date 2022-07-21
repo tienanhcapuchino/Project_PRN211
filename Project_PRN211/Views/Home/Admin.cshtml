@@ -74,7 +74,7 @@
                 {
                     <tr>
                         <td>Room @ro.RoomNo</td>
-                        <td>@ro.RoomPrice VND</td>
+                        <td>@(string.Format("{0:#,0}", ro.RoomPrice)) VND</td>
                         <td>@ro.NumberOfPersons</td>
                         <td>
                             @if (@ro.Status == 1)

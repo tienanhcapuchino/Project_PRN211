@@ -15,7 +15,7 @@ namespace Project_PRN211.Logic
         }
         public Employee logged(string username, string password)
         {
-            return context.Employees.Where(x => x.Username.Equals(username) && x.Password.Equals(password)).FirstOrDefault();
+            return context.Employees.Where(x => x.Username.Equals(username)  && x.Password.Equals(password) || x.Email.Equals(username) && x.Password.Equals(password)).FirstOrDefault();
         }
         //public void AddGuest(short room, string fullname, string phone, DateTime arrDate, DateTime depDate)
         //{
