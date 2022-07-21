@@ -128,6 +128,7 @@ namespace Project_PRN211.Controllers
                         ViewBag.oldPa = oldPass;
                         ViewBag.newPa = newPass;
                         ViewBag.rePa = repass;
+                        ViewBag.users = em;
                         return View("/Views/Employee/ChangePass.cshtml");
                     }
                     if (!newPass.Equals(repass))
@@ -136,6 +137,7 @@ namespace Project_PRN211.Controllers
                         ViewBag.oldPa = oldPass;
                         ViewBag.newPa = newPass;
                         ViewBag.rePa = repass;
+                        ViewBag.users = em;
                         return View("/Views/Employee/ChangePass.cshtml");
                     }
                     em.Password = newPass;

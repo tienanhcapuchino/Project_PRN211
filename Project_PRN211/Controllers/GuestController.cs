@@ -80,6 +80,7 @@ namespace Project_PRN211.Controllers
                 } else
                 {
                     ViewBag.err = "Phone number must be 10 numbers and starts with 0!";
+                    ViewBag.users = em;
                     return View("Views/Guest/InfoGuest.cshtml", gu);
                 }
                 use.UpdateGuest(gu);
@@ -132,6 +133,7 @@ namespace Project_PRN211.Controllers
                 {
                     ViewBag.Err = "Phone number must be 10 numbers and starts with 0!";
                     ViewBag.Rom = ro1;
+                    ViewBag.users = em;
                     return View("Views/Guest/AddGuest.cshtml", gu);
                 }
                 Bill b = new Bill();
