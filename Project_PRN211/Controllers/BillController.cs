@@ -20,6 +20,7 @@ namespace Project_PRN211.Controllers
 
             Bill b = new Bill();
             Guest g = new Guest();
+            List<Guest> listGu = new List<Guest>();
             string jsonstr = HttpContext.Session.GetString("user");
             if (jsonstr is null)
             {
@@ -31,21 +32,36 @@ namespace Project_PRN211.Controllers
                 using (var context = new SE1619_Project_HotelContext())
                 {
                     context.RoomTypes.ToList();
-                    g = context.Guests.FirstOrDefault(x => x.GuestId == para1);
-                    g.DepartureDate = DateTime.Now;
+                    context.Guests.ToList();
+                    listGu = context.Guests.Where(x => x.GuestId == para1).ToList();
+
                     b = context.Bills.FirstOrDefault(x => x.GuestId == g.GuestId);
                     Room ro = context.Rooms.FirstOrDefault(x => x.RoomNo == para1);
                     int? priceRoom = ro.RoomType.RoomPrice;
                     price = Int32.Parse(priceRoom + "");
-                    try
-                    {
-                        b.Note = b.Note.Trim();
-                    }
-                    catch (Exception)
-                    {
+                    //try
+                    //{
+                    //    b.Note = b.Note.Trim();
+                    //}
+                    //catch (Exception)
+                    //{
 
-                    }
+                    //}
                     context.SaveChanges();
+                }
+                foreach (Guest guest in listGu)
+                {
+                    if (guest.Status == 1)
+                    {
+                        g = guest;
+                        break;
+                    }
+                }
+                using (var conte = new SE1619_Project_HotelContext())
+                {
+                    g.DepartureDate = DateTime.Now;
+                    conte.Guests.Update(g);
+                    conte.SaveChanges();
                 }
                 DateTime from = Convert.ToDateTime(g.ArrivalDate);
                 DateTime to = DateTime.Now;
@@ -87,14 +103,14 @@ namespace Project_PRN211.Controllers
                     ro = context.Rooms.FirstOrDefault(x => x.RoomNo == para1);
                     int? priceRoom = ro.RoomType.RoomPrice;
                     price = Int32.Parse(priceRoom + "");
-                    try
-                    {
-                        b.Note = b.Note.Trim();
-                    }
-                    catch (Exception)
-                    {
+                    //try
+                    //{
+                    //    b.Note = b.Note.Trim();
+                    //}
+                    //catch (Exception)
+                    //{
 
-                    }
+                    //}
                     context.SaveChanges();
                 }
                 us.updateBill(b);
@@ -107,7 +123,7 @@ namespace Project_PRN211.Controllers
                     conten.Update(gu);
                     conten.SaveChanges();
                 }
-                
+
                 DateTime from = Convert.ToDateTime(gu.ArrivalDate);
                 DateTime to = DateTime.Now;
                 int days = us.countDays(from, to);
