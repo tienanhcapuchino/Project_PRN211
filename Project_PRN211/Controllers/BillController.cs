@@ -21,10 +21,12 @@ namespace Project_PRN211.Controllers
             Bill b = new Bill();
             Guest g = new Guest();
             List<Guest> listGu = new List<Guest>();
+            List<Bill> lstBill = new List<Bill>();
             string jsonstr = HttpContext.Session.GetString("user");
             if (jsonstr is null)
             {
                 return View("/Views/Home/Login.cshtml");
+                //return "abc";
             }
             else
             {
@@ -33,9 +35,24 @@ namespace Project_PRN211.Controllers
                 {
                     context.RoomTypes.ToList();
                     context.Guests.ToList();
-                    listGu = context.Guests.Where(x => x.GuestId == para1).ToList();
-
-                    b = context.Bills.FirstOrDefault(x => x.GuestId == g.GuestId);
+                    listGu = context.Guests.Where(x => x.RoomNo == para1).ToList();
+                    foreach (Guest guest in listGu)
+                    {
+                        if (guest.Status == 1)
+                        {
+                            g = guest;
+                            break;
+                        }
+                    }
+                    lstBill = context.Bills.Where(x => x.GuestId == g.GuestId).ToList();
+                    foreach(Bill bill in lstBill)
+                    {
+                        if (bill.Status == 0)
+                        {
+                            b = bill;
+                            break;
+                        }
+                    }
                     Room ro = context.Rooms.FirstOrDefault(x => x.RoomNo == para1);
                     int? priceRoom = ro.RoomType.RoomPrice;
                     price = Int32.Parse(priceRoom + "");
@@ -49,14 +66,7 @@ namespace Project_PRN211.Controllers
                     //}
                     context.SaveChanges();
                 }
-                foreach (Guest guest in listGu)
-                {
-                    if (guest.Status == 1)
-                    {
-                        g = guest;
-                        break;
-                    }
-                }
+                
                 using (var conte = new SE1619_Project_HotelContext())
                 {
                     g.DepartureDate = DateTime.Now;
@@ -73,10 +83,10 @@ namespace Project_PRN211.Controllers
                 ViewBag.Days = days;
                 ViewBag.RomNO = para1;
                 ViewBag.users = em;
-                //return $"Total day+s are: {days} and DepartureDate: {g.DepartureDate}";
+                //return $"Total days are: {days} and DepartureDate: {g.DepartureDate}";
                 return View(b);
+                //return $"{b.ToString()}";
             }
-
         }
         public IActionResult CheckOut(Bill b, int para1)
         {
@@ -91,6 +101,7 @@ namespace Project_PRN211.Controllers
             if (jsonstr is null)
             {
                 return View("/Views/Home/Login.cshtml");
+                //return "abcde";
             }
             else
             {
@@ -98,7 +109,7 @@ namespace Project_PRN211.Controllers
                 using (var context = new SE1619_Project_HotelContext())
                 {
                     context.RoomTypes.ToList();
-                    gu = context.Guests.FirstOrDefault(x => x.RoomNo == para1);
+                    gu = context.Guests.FirstOrDefault(x => x.RoomNo == para1 && x.Status == 1);
                     b1 = context.Bills.FirstOrDefault(x => x.GuestId == gu.GuestId);
                     ro = context.Rooms.FirstOrDefault(x => x.RoomNo == para1);
                     int? priceRoom = ro.RoomType.RoomPrice;
@@ -119,8 +130,9 @@ namespace Project_PRN211.Controllers
                 {
                     gu.Status = 0;
                     ro.Status = 0;
-                    conten.Update(ro);
-                    conten.Update(gu);
+                    
+                    conten.Rooms.Update(ro);
+                    conten.Guests.Update(gu);
                     conten.SaveChanges();
                 }
 
@@ -136,6 +148,7 @@ namespace Project_PRN211.Controllers
                 ViewBag.users = em;
                 ViewBag.ok = 1;
                 return View("/Views/Bill/ViewBill.cshtml", b1);
+                //return gu.Status + "" + "  " + gu.GuestId + "";
             }
         }
     }

@@ -15,6 +15,10 @@ namespace Project_PRN211.Models
         public int? Status { get; set; }
         public string Note { get; set; }
 
+        public override string ToString()
+        {
+            return $"{InvoiceNo} - {GuestId} - {PaymentMode} - {Status} - {Note}";
+        }
         public virtual Guest Guest { get; set; }
     }
 }
