@@ -63,8 +63,8 @@
             <thead>
                 <tr>
                     <th scope="col">RoomNo</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Number of person</th>
+                    <th scope="col">Price/day</th>
+                    <th scope="col">Person/room</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -76,10 +76,10 @@
                         <td>
                             @if (ro.Status == 1)
                             {
-                                <a href="/Guest/InfoGuest/@ro.RoomNo">Room @ro.RoomNo</a>
+                                <a class="text text-info" href="/Guest/InfoGuest/@ro.RoomNo"><strong>Room @ro.RoomNo</strong></a>
                             } else
                             {
-                                <a href="/Guest/AddGuest/@ro.RoomNo">Room @ro.RoomNo</a>
+                                <a class="text text-info" href="/Guest/AddGuest/@ro.RoomNo"><strong>Room @ro.RoomNo</strong></a>
                             }
                         </td>
                         <td>@(string.Format("{0:#,0}", ro.RoomPrice)) VND</td>
