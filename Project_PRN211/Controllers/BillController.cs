@@ -130,9 +130,10 @@ namespace Project_PRN211.Controllers
                 {
                     gu.Status = 0;
                     ro.Status = 0;
-                    
+                    b.Status = 1;
                     conten.Rooms.Update(ro);
                     conten.Guests.Update(gu);
+                    conten.Bills.Update(b);
                     conten.SaveChanges();
                 }
 
