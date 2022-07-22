@@ -59,6 +59,7 @@ namespace Project_PRN211.Controllers
                 }
                 if (!e.Email.Contains("@")){
                     ViewBag.Err = "Email is invalid!";
+                    ViewBag.users = em;
                     return View("/Views/Employee/UpdateProfile.cshtml", use.GetEmployee(em.Id));
                 }
                 foreach (Employee emp in lstEM)
@@ -66,11 +67,13 @@ namespace Project_PRN211.Controllers
                     if (e.Email.Equals(emp.Email))
                     {
                         ViewBag.Err = "Email is already exists!";
+                        ViewBag.users = em;
                         return View("/Views/Employee/UpdateProfile.cshtml", use.GetEmployee(em.Id));
                     }
                     if (e.PhoneNumber.Equals(emp.PhoneNumber))
                     {
                         ViewBag.Err = "Phone number is already exists!";
+                        ViewBag.users = em;
                         return View("/Views/Employee/UpdateProfile.cshtml", use.GetEmployee(em.Id));
                     }
                 }
@@ -80,6 +83,7 @@ namespace Project_PRN211.Controllers
                 } else
                 {
                     ViewBag.Err = "Phone number must have 10 numbers and start with 0!";
+                    ViewBag.users = em;
                     return View("/Views/Employee/UpdateProfile.cshtml", use.GetEmployee(em.Id));
                 }
                 use.EditProfile(e);

@@ -73,7 +73,15 @@
                 @foreach (RoomTY ro in @Model)
                 {
                     <tr>
-                        <td>Room @ro.RoomNo</td>
+                        <td>
+                            @if (ro.Status == 1)
+                            {
+                                <a href="/Guest/InfoGuest/@ro.RoomNo">Room @ro.RoomNo</a>
+                            } else
+                            {
+                                <a href="/Guest/AddGuest/@ro.RoomNo">Room @ro.RoomNo</a>
+                            }
+                        </td>
                         <td>@(string.Format("{0:#,0}", ro.RoomPrice)) VND</td>
                         <td>@ro.NumberOfPersons</td>
                         <td>
