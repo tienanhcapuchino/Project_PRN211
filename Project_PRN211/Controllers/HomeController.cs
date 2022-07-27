@@ -48,7 +48,6 @@ namespace Project_PRN211.Controllers
             }
             else
             {
-
                 List<RoomTY> lstro = ManageDAO.listAllRoom();
                 e = JsonConvert.DeserializeObject<Employee>(jsonStr);
                 ViewBag.Users = e;
